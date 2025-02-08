@@ -17,7 +17,12 @@ fn main() {
     println!(
         "Dynamic  update arr is : {:?}",
         update_arr(create_dynamic_arr())
-    )
+    );
+
+    println!("Tuple is : {:?}", create_tuple(1, 2));
+
+    println!("Struct is : {:?}", create_struct());
+    println!("Enum is : {:?} ", create_enum());
 }
 
 fn sum(a: u32, b: u32) -> u32 {
@@ -108,6 +113,80 @@ fn update_arr(mut arr: Vec<u32>) -> Vec<u32> {
     return arr;
 }
 
+fn create_tuple(a: u32, b: u32) -> (u32, f32) {
+    let tup = (2, "Nishant", "Rust", 0.2);
+    println!("Tuple is : {:?} ", tup);
+
+    // Destructuring tuples
+    let (a, b, c, d) = tup;
+    println!("a : {} b : {} ", a, b);
+    return (a, d);
+}
+
+fn create_struct() -> u32 {
+    #[derive(Debug)]
+    struct Person {
+        name: String,
+        age: u32,
+        city: String,
+        is_student: bool,
+        gender: char,
+    }
+
+    let people = Person {
+        name: String::from("Nishant"),
+        age: 25,
+        city: String::from("Delhi"),
+        is_student: false,
+        gender: 'M',
+    };
+
+    println!("{:?}", people);
+
+    return people.age;
+}
+
+fn create_enum() -> u32 {
+    enum Color {
+        Red,
+        Green,
+        Yellow,
+        Blue,
+    }
+
+    enum Shape {
+        Circle(u32),
+        Rectangle(u32, u32),
+    }
+
+    // let shape = Shape::Circle(10);
+    let shape = Shape::Rectangle(10, 20);
+
+    let circle_shape = Shape::Circle(234);
+
+    // println!("Shape is : {:?}", shape);
+
+    let color = Color::Red;
+
+    // println!("Color is : {:?}", color);
+
+    match shape {
+        Shape::Circle(i) => println!("Circle is :{:?}", i),
+        Shape::Rectangle(i, j) => println!("Rectangle is : {:?} , {:?} ", i, j),
+    }
+
+    match circle_shape {
+        Shape::Circle(radius) => println!("Circle is : {:?}", radius),
+        Shape::Rectangle(i, j) => println!("Rectangle is : {:?} , {:?} ", i, j),
+    }
+    match color {
+        Color::Red => println!("Red"),
+        Color::Blue => println!("Blue"),
+        Color::Green => println!("Green"),
+        Color::Yellow => println!("Yellow"),
+    }
+    return 3;
+}
 /*
 *
 *   Data Types:

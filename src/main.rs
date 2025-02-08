@@ -23,6 +23,8 @@ fn main() {
 
     println!("Struct is : {:?}", create_struct());
     println!("Enum is : {:?} ", create_enum());
+
+    looping()
 }
 
 fn sum(a: u32, b: u32) -> u32 {
@@ -185,8 +187,22 @@ fn create_enum() -> u32 {
         Color::Green => println!("Green"),
         Color::Yellow => println!("Yellow"),
     }
+
+    let _name = String::from("Nishant");
     return 3;
 }
+
+fn looping() {
+    let arr = [1, 3, 4, 5];
+    for i in 1..20 {
+        println!("i is {} ", i);
+    }
+
+    for item in arr {
+        println!("Item is : {:?}", item);
+    }
+}
+
 /*
 *
 *   Data Types:
